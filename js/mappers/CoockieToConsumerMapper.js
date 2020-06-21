@@ -20,12 +20,14 @@ export default class CoockieToConsumerMapper {
             let newConsumer = new this.consumer();
             // парсим данные из coockie, получаем ассоциативный массив
             let consumerObj = JSON.parse(this.cookie[number]);
-            // перебираем ассоциативный массив и заполняем данными экземпляр класса Consumer
-            for(let elem in consumerObj ) {
-                newConsumer[elem] = consumerObj[elem];
-            }
-            // добавляем получившийся Consumer в массив
-            consumerList.push(newConsumer);
+			if(typeof consumerObj == "object"){
+				// перебираем ассоциативный массив и заполняем данными экземпляр класса Consumer
+				for(let elem in consumerObj ) {
+					newConsumer[elem] = consumerObj[elem];
+				}
+				// добавляем получившийся Consumer в массив
+				consumerList.push(newConsumer);
+			}
         }
         return consumerList;
     }

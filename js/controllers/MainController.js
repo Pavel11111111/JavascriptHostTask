@@ -43,8 +43,10 @@ export default class MainController {
         //если работаем с синтетическими данными
         else{
             return new Promise(function(resolve, reject) {
-                //если до этого пользователь ни разу не заходил на страницу, и у него не записано никаких значений в coockie
-                if(document.cookie === "") {
+                //если до этого пользователь ни разу не заходил на страницу, и у него не записано никаких потребителей в coockie
+				let i = document.cookie;
+                let result = i.match(/"id":"\d+"/g);
+                if(result === "") {
                     //создаём синтетические данные
                     let consumers = [];
                     consumers[1] = {
